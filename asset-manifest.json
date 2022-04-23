@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TwitterHashTagWithReactAndFirebaseAuth/static/css/main.d28019a1.css",
+    "main.js": "/TwitterHashTagWithReactAndFirebaseAuth/static/js/main.03ee29e8.js",
+    "index.html": "/TwitterHashTagWithReactAndFirebaseAuth/index.html",
+    "main.d28019a1.css.map": "/TwitterHashTagWithReactAndFirebaseAuth/static/css/main.d28019a1.css.map",
+    "main.03ee29e8.js.map": "/TwitterHashTagWithReactAndFirebaseAuth/static/js/main.03ee29e8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d28019a1.css",
+    "static/js/main.03ee29e8.js"
+  ]
+}
