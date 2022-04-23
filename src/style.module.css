@@ -1,0 +1,96 @@
+/* .trendposition {
+  position: fixed;
+} */
+
+.iconpointer {
+  cursor: pointer;
+}
+.iconpointer:hover {
+  color: #2980b9 !important;
+}
+
+.backicon {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.backicon:hover {
+  color: #2980b9;
+  cursor: pointer;
+}
+.time {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.listitem {
+  cursor: pointer;
+}
+.listitem:hover {
+  text-decoration: underline;
+}
+.trendposition {
+  position: fixed;
+}
+
+.hashtagfix:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.rowfix {
+  min-height: 50px;
+}
+
+
+
+/* .cardfix {
+  width: 80% !important;
+} */
+/* .cardview {
+  padding-left: calc(100vw - 100%);
+} */
+
+/* @media (max-width: 992px) {
+  .cardview {
+    margin-left: 30px;
+  }
+} */
+@media (max-width: 578px) {
+  .iconpointer {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    z-index: 1;
+  }
+  .trendposition {
+    position: static !important;
+    width: 80% !important;
+  }
+  .mobilefix {
+    position: sticky !important;
+    top: 0;
+  }
+  .cardfix {
+    width: 80%;
+    margin: auto;
+    z-index: -1;
+  }
+  .buttonfix {
+    width: 80% !important;
+    margin: auto;
+  }
+
+  /* .cardview {
+    z-index: -1 !important;
+  }
+
+  .trendposition {
+    position: none;
+  }
+  .fixccontainer {
+    margin: 0px !important;
+  }
+  .trendposition2 {
+    position: sticky;
+    top: 0;
+  } */
+}
