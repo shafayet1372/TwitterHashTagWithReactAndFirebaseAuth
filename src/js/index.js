@@ -1,7 +1,7 @@
 
 let TwittsTrendCount = (datas) => {
 
-    let allTwitts = datas.map((x) => x.post.match(/#[\w]+/gi)).flat(Infinity);
+    let allTwitts = datas.filter(x => /#[\w]+/i.test(x.post)).map((x) => x.post.match(/#[\w]+/gi)).flat(Infinity);
     let twitsCount = allTwitts.reduce((acc, val) => {
         let value = val.toLowerCase();
         if (acc[value]) {
@@ -25,7 +25,7 @@ let TwittsTrendCount = (datas) => {
 let errorHandlerTwitts = (post) => {
     let error = null;
     if (post.length <= 10) {
-        error = " twitt should be minimum 10 characters long";
+        error = "minimum 10 characters long";
     }
     return {
         hasError: !error ? false : true,

@@ -85,26 +85,26 @@ export default function Index({ handleClose }) {
   };
   return (
     <Form>
-      <Form.Group
-        className="mb-3 d-flex"
-        controlId="exampleForm.ControlTextarea1  "
-      >
-        <Form.Control
-          as="textarea"
-          rows={6}
-          value={post}
-          onChange={changeHandler}
-          className={style.textarea}
-          onKeyUp={twittSuggestionsView}
-          ref={refs}
-        />
+      <div className="d-flex">
+        <Form.Group
+          className={`${style.textarea} mb-3`}
+          controlId="exampleForm.ControlTextarea1  "
+        >
+          <Form.Control
+            as="textarea"
+            rows={6}
+            value={post}
+            onChange={changeHandler}
+            onKeyUp={twittSuggestionsView}
+            ref={refs}
+          />
+          {error && <p className="text-danger">{error}</p>}
+        </Form.Group>
         <TwittSuggestionsView
           twiitSuggestions={twiitSuggestions}
           SelectTwittHandler={SelectTwittHandler}
         />
-        {error && <p className="text-danger">{error}</p>}
-      </Form.Group>
-
+      </div>
       <Button
         variant="info"
         className="text-white"
