@@ -6,21 +6,26 @@ import Modal from "../Modal/Modal";
 import TwittView from "../TwitView";
 import TrendView from "../Trend/TrendView";
 import { Button, Spinner } from "react-bootstrap";
-import { topTwittsTrendCount } from "../../js";
+import { TwittsTrendCount } from "../../js";
+import context from "../../context";
 import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
+  browserSessionPersistence,
+  setPersistence,
 } from "firebase/auth";
 
+const topTwittTotalShow = 5;
 export default function Index() {
   let [show, setShow] = useState(false);
   let [datas, setDatas] = useState([]);
   let [selectedTwitt, setSelectedTwitt] = useState("");
   let [userauth, setAuth] = useState(false);
   let [error, setError] = useState("");
+  let [mode, setMode] = useState(null);
 
   let auth = getAuth();
   let collections = query(
@@ -46,7 +51,7 @@ export default function Index() {
         setAuth(false);
       }
     });
-  }, []);
+  }, [auth]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,10 +59,12 @@ export default function Index() {
 
   let loginHandler = async (values) => {
     let { email, password } = values;
+
+    setPersistence(auth, browserSessionPersistence);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (e) {
-      setError(e.code);
+    } catch (error) {
+      setError(error.code);
     }
   };
 
@@ -77,6 +84,7 @@ export default function Index() {
   let signOutHandler = async () => {
     try {
       await signOut(auth);
+      goBackHandler();
     } catch (e) {}
   };
 
@@ -84,12 +92,19 @@ export default function Index() {
     setShow((p) => !p);
   };
 
+  let changeModeHandler = (value) => {
+    setMode(value);
+  };
+
   let errorHandler = () => {
     setError("");
   };
-
-  let topTwittstrend = () => {
-    return topTwittsTrendCount(datas);
+  let goBackHandler = () => {
+    setError("");
+    setMode("");
+  };
+  let topTwittsCount = () => {
+    return TwittsTrendCount(datas.slice());
   };
 
   let selectHandler = (value) => {
@@ -139,23 +154,27 @@ export default function Index() {
               <TrendView
                 handleClose={handleClose}
                 selectHandler={selectHandler}
-                topTwitts={topTwittstrend()}
+                topTwitts={topTwittsCount().slice(0, topTwittTotalShow)}
               />
             </div>
             <div className={`col-md-7 col-sm-7 mt-5  ${style.cardview}`}>
               {twittShow()}
             </div>
           </div>
-
-          <Modal
-            show={show}
-            userauth={userauth}
-            loginHandler={loginHandler}
-            registerHandler={registerHandler}
-            handleClose={handleClose}
-            error={error}
-            errorHandler={errorHandler}
-          />
+          <context.Provider value={topTwittsCount()}>
+            <Modal
+              show={show}
+              userauth={userauth}
+              loginHandler={loginHandler}
+              registerHandler={registerHandler}
+              handleClose={handleClose}
+              error={error}
+              errorHandler={errorHandler}
+              mode={mode}
+              changeModeHandler={changeModeHandler}
+              goBackHandler={goBackHandler}
+            />
+          </context.Provider>
         </div>
       )}
     </div>

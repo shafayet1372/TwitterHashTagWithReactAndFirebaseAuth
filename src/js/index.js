@@ -1,6 +1,6 @@
 
-let topTwittsTrendCount = (datas) => {
-    let perTrends = 5;
+let TwittsTrendCount = (datas) => {
+
     let allTwitts = datas.map((x) => x.post.match(/#[\w]+/gi)).flat(Infinity);
     let twitsCount = allTwitts.reduce((acc, val) => {
         let value = val.toLowerCase();
@@ -18,7 +18,7 @@ let topTwittsTrendCount = (datas) => {
         return b[1] - a[1];
     });
 
-    return sortedTopTwitts.slice(0, perTrends);
+    return sortedTopTwitts
 }
 
 
@@ -34,5 +34,4 @@ let errorHandlerTwitts = (post) => {
 }
 
 
-
-export { topTwittsTrendCount, errorHandlerTwitts }
+export { TwittsTrendCount, errorHandlerTwitts }

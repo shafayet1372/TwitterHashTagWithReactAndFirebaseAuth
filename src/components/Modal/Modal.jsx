@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Register from "../LoginOrRegisterForm";
+import React, { useEffect, useState, useCallback } from "react";
 import CreateTwitt from "../createTwitt";
 import Instructions from "../Instructions";
 import LoginView from "../LoginOrRegistrationView";
@@ -13,23 +12,15 @@ export default function ModalView({
   registerHandler,
   userauth,
   error,
-  errorHandler,
+  goBackHandler,
+  changeModeHandler,
+  mode,
 }) {
-  let [mode, setMode] = useState(null);
-  useEffect(() => {
-    if (!userauth) {
-      goBackHandler();
-    }
-  }, [userauth]);
-
-  let changeModeHandler = (value) => {
-    setMode(value);
-  };
-
-  let goBackHandler = () => {
-    setMode(null);
-    errorHandler();
-  };
+  // useEffect(() => {
+  //   if (!userauth ) {
+  //     goBackHandler();
+  //   }
+  // }, [userauth, goBackHandler, mode]);
 
   let authenticateHandler = (values) => {
     if (mode == "login") {

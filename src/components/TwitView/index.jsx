@@ -7,8 +7,8 @@ import regexifyString from "regexify-string";
 import ReactTimeAgo from "react-time-ago";
 import style from "../../style.module.css";
 export default function Index({ datas, selectHandler }) {
-  let dataShow = () => {
-    let twits = datas.map((x) => {
+  let stringRegexiFy = (datas) => {
+    return datas.map((x) => {
       const result = regexifyString({
         pattern: /#[\w]+/gi,
         decorator: (match, index) => {
@@ -26,6 +26,10 @@ export default function Index({ datas, selectHandler }) {
       });
       return { ...x, post: result };
     });
+  };
+
+  let dataShow = () => {
+    let twits = stringRegexiFy(datas);
     return twits.map((x) => {
       return (
         <Card

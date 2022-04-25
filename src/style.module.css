@@ -40,8 +40,29 @@
   min-height: 50px;
 }
 
+.suggestion_box {
+  flex-basis: 40%;
+  min-height: 150px;
+  background-color: transparent;
+}
+.inner_suggestion_box {
+  height: 150px;
+  overflow: auto;
+  font-size: 0.9em;
+}
 
-
+.suggestion_list {
+  cursor: pointer;
+  padding: 1px;
+}
+.textarea {
+  flex-basis: 60%;
+  word-break: break-all;
+}
+.suggestion_list:hover {
+  background-color: #70a1ff !important;
+  color: white;
+}
 /* .cardfix {
   width: 80% !important;
 } */

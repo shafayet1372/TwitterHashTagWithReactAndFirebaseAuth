@@ -5,3 +5,6 @@ html {
 body {
   padding-right: 0px !important;
 }
+.ck-editor__editable_inline {
+  min-height: 200px;
+}
