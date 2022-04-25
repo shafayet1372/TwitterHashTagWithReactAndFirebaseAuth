@@ -98,7 +98,7 @@ export default function Index({ handleClose }) {
             onKeyUp={twittSuggestionsView}
             ref={refs}
           />
-          {error && <p className="text-danger">{error}</p>}
+          {error && <p className={style.twitt_error}>{error}</p>}
         </Form.Group>
         <TwittSuggestionsView
           twiitSuggestions={twiitSuggestions}

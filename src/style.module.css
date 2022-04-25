@@ -55,6 +55,10 @@
   cursor: pointer;
   padding: 1px;
 }
+.twitt_error {
+  color: red;
+  font-size: 14px;
+}
 .textarea {
   flex-basis: 60%;
   word-break: break-all;
