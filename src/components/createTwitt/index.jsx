@@ -97,6 +97,7 @@ export default function Index({ handleClose }) {
               highlight: /#[\w]+/gi,
               className: style.highlights,
             }}
+            data-contents="false"
             // onKeyUp={twittSuggestionsView}
             // selection={selection}
             onChange={onChange}

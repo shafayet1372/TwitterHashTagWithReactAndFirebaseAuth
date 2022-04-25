@@ -6,7 +6,11 @@ body {
   padding-right: 0px !important;
 }
 
-.DraftEditor-editorContainer {
+/* .public-DraftStyleDefault-block {
+  height: 150px !important;
+  border: 1px solid grey !important;
+} */
+.public-DraftEditor-content {
   min-height: 150px !important;
   border: 1px solid grey !important;
 }
