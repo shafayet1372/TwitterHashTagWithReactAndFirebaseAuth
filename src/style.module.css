@@ -21,7 +21,12 @@
   font-size: 25px;
   margin-bottom: 5px;
 }
+.highlights {
+  background-color: transparent !important;
+  color: #0dcaf0;
 
+  font-weight: bold;
+}
 .listitem {
   cursor: pointer;
 }
@@ -45,6 +50,7 @@
   min-height: 150px;
   background-color: transparent;
 }
+
 .inner_suggestion_box {
   height: 150px;
   overflow: auto;
