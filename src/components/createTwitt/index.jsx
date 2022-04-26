@@ -12,19 +12,13 @@ export default function Index({ handleClose }) {
   let [error, setError] = useState("");
   let [twiitSuggestions, setTwiitSuggestions] = useState([]);
   let [caretPosition, setCareposition] = useState(0);
-  // // let [showSuggestion, setShowSuggestion] = useState(true);
 
   useEffect(() => {
     if (caretPosition) {
       twittSuggestionsView(post, caretPosition);
     }
   }, [caretPosition]);
-  // useEffect(() => {
-  //   if (caretPosition) {
-  //     twittSuggestionsView(post, caretPosition);
-  //   }
-  //   // twittSuggestionsView(post, caretPosition);
-  // }, [caretPosition]);
+
   let allTwits = useContext(context);
 
   let collections = collection(db, "twitterposts");
@@ -82,12 +76,11 @@ export default function Index({ handleClose }) {
       })
     );
     setTwiitSuggestions([]);
-    // setCareposition(index + value.length);
-    // console.log(caretPosition);
   };
 
   let onChange = (value, selection) => {
     setCareposition(selection.anchor);
+
     setPost(value);
   };
   return (
