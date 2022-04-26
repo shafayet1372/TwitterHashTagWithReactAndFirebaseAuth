@@ -11,14 +11,20 @@ export default function Index({ handleClose }) {
   let [post, setPost] = useState("");
   let [error, setError] = useState("");
   let [twiitSuggestions, setTwiitSuggestions] = useState([]);
-  let [caretPosition, setCareposition] = useState(null);
-  // let [caretEndPosition, setCaretEndposition] = useState(null);
+  let [caretPosition, setCareposition] = useState(0);
+  // // let [showSuggestion, setShowSuggestion] = useState(true);
 
   useEffect(() => {
-    if (post) {
+    if (caretPosition) {
       twittSuggestionsView(post, caretPosition);
     }
-  }, [post]);
+  }, [caretPosition]);
+  // useEffect(() => {
+  //   if (caretPosition) {
+  //     twittSuggestionsView(post, caretPosition);
+  //   }
+  //   // twittSuggestionsView(post, caretPosition);
+  // }, [caretPosition]);
   let allTwits = useContext(context);
 
   let collections = collection(db, "twitterposts");
@@ -75,10 +81,11 @@ export default function Index({ handleClose }) {
         return s;
       })
     );
-    setCareposition(null);
-    // setCaretEndposition(index + value.length);
     setTwiitSuggestions([]);
+    // setCareposition(index + value.length);
+    // console.log(caretPosition);
   };
+
   let onChange = (value, selection) => {
     setCareposition(selection.anchor);
     setPost(value);
@@ -99,7 +106,7 @@ export default function Index({ handleClose }) {
             }}
             data-contents="false"
             // onKeyUp={twittSuggestionsView}
-            // selection={selection}
+            // selection={selections}
             onChange={onChange}
           />
           {/* <Form.Control
